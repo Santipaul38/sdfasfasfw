@@ -15,5 +15,10 @@
   <%= @honor.requirements %>
 </p>
 
+<p>
+  <strong>Category:</strong>
+  <%= @honor.category.name %>
+</p>
+
 <%= link_to 'Edit', edit_honor_path(@honor) %> |
 <%= link_to 'Back', honors_path %>

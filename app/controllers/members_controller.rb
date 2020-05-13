@@ -5,6 +5,7 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     @members = Member.all
+    @members = @members.where(:document_number => params[:document_number]) unless params[:document_number].blank?
   end
 
   # GET /members/1
@@ -25,6 +26,8 @@ class MembersController < ApplicationController
   # POST /members.json
   def create
     @member = Member.new(member_params)
+
+    
 
     respond_to do |format|
       if @member.save

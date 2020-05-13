@@ -8,4 +8,17 @@ class Member < ApplicationRecord
 
 	validates :first_name, :last_name, :document_number, :birth_date, presence: true
 	validates :document_number, uniqueness: true
+
+	validate :honors
+
+	def honors
+		list = []
+		for h in MemberHonor.all
+			if h.member_id == self.id
+				list.push h
+			end
+		end
+		puts list
+	end
+
 end
